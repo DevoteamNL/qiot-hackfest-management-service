@@ -14,7 +14,7 @@ public class ManagementResourceTest {
         given()
             .when().get("/hello")
             .then()
-            .statusCode(404);
+            .statusCode(200);
     }
 
 }
