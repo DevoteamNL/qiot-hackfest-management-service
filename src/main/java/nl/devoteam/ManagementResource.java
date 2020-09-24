@@ -19,7 +19,6 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
 
 @Path("/admin")
-@Authenticated
 public class ManagementResource {
 
     private final RebootService rebootService;
@@ -40,6 +39,7 @@ public class ManagementResource {
     @GET
     @Path("/user-info")
     @Produces(MediaType.TEXT_PLAIN)
+    @Authenticated
     public String printUsername() {
         if (isDevoteamEmployee()) {
             UserInfo userInfo = securityIdentity.getAttribute("userinfo");
@@ -70,6 +70,7 @@ public class ManagementResource {
     @GET
     @Path("/health")
     @Produces(MediaType.APPLICATION_JSON)
+    @Authenticated
     public Map<String, HealthState> getHealth() {
         Map<String, HealthState> healthStateMap = new HashMap<>();
 
@@ -105,6 +106,7 @@ public class ManagementResource {
     @GET
     @Path("/reboot-services")
     @Produces(MediaType.APPLICATION_JSON)
+    @Authenticated
     public String reboot() {
         if (!isDevoteamEmployee()) {
             return "{ \"nope\": \"lol\"}";
