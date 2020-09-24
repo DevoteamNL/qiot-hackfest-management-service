@@ -1,0 +1,10 @@
+[Unit]
+Description=Air Quality Management Service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/podman start -a air-quality-management
+ExecStop=/usr/bin/podman stop -t 2 air-quality-management
+
+[Install]
+WantedBy=local.target
