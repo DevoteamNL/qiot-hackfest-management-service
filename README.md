@@ -1,4 +1,6 @@
-# qiot-hackfest-management-service project
+# QIOT Hackfest Air Quality Management Service
+
+![Master Branch](https://github.com/DevoteamNL/qiot-hackfest-management-service/workflows/Master%20Branch/badge.svg)
 
 ## Why this service?
 
@@ -29,3 +31,9 @@ This endpoint is quite dangerous, and as such can only be operated by a `devotea
 We would not want you breaking our stuff, would we. ;-)
 After being triggered, this endpoint will terminate the internal components of the pi.
 It will update the containers by pulling down the latest, and start the corresponding services.
+
+## Running the container on the raspberry
+
+```
+podman run -d -p 8081:8081 --network=qiot --privileged --name=air-quality-management bentaljaard/air-quality-management:aarch64-latest
+```
